@@ -1,11 +1,13 @@
 package br.senai.sp.jandira.Model;
 
 import java.util.Scanner;
-
 public class Funcionario {
+
     String Nome, Email, Endereco;
     String dataNascimento;
     long telefone, cpf, rg;
+
+    double bonus;
 
     public void CadastroFuncionario(){
         Scanner teclado = new Scanner(System.in);
@@ -26,8 +28,16 @@ public class Funcionario {
         System.out.print("imforme seu telefone: ");
         telefone = teclado.nextLong();
 
-        teclado.close();
+
 
         System.out.print("cadastro finalizado!");
     }
+
+    public void funcionarioBonus(Veiculo objVeiculo){
+        System.out.println("------- saudo do vendedor ---------");
+        double percentual = objVeiculo.valor * 0.10;
+
+        bonus = percentual;
+    }
+
 }

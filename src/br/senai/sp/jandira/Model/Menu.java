@@ -3,33 +3,70 @@ package br.senai.sp.jandira.Model;
 import java.util.Scanner;
 
 public class Menu {
+    Scanner teclado = new Scanner(System.in);
+
+    Cliente objCliente = new Cliente();
+    Veiculo objVeiculo = new Veiculo();
+    Funcionario objFucionario = new Funcionario();
+    Venda objVenda = new Venda();
+
+    public void escolaCadastro(){
+
+        boolean contimuar  = true;
 
 
-    public void escolaCdastro(){
+        while (contimuar){
+            System.out.println("--------------------------------------------");
 
-        String nome;
+            System.out.println("1 cadastrar cliente");
+            System.out.println("2 cadastrar veiculo");
+            System.out.println("3 cadastrar funcionario");
+            System.out.println("4 realizar venda");
+            System.out.println("5 sair do app");
 
-        // instaciar Veiculos!
-        Funcionario objFuncionario = new Funcionario();
+            System.out.println("--------------------------------------------");
+            int decisao = teclado.nextInt();
+            teclado.nextLine();
 
-        Cliente objCliente = new Cliente();
-        Scanner teclado = new Scanner(System.in);
+            switch (decisao){
+                case 1:
+                    objCliente.CadastroClient();
+                break;
 
+                case 2:
+                    objVeiculo.Cadastrarveiculo();
+                    break;
 
-        System.out.println("-----------ola, seja bem vindo!-----------------");
-        System.out.println("quem e voce?");
-        nome = teclado.next();
+                case 3:
 
-        if (nome.equals("Cliente")){
-            objCliente.CadastroClient();
+                    objFucionario.CadastroFuncionario();
+                    break;
 
-        } else if (nome.equals("Funcionario")) {
-            objFuncionario.CadastroFuncionario();
-        }else {
-            System.out.println("voce nao pode realizar a atividade de cadastro !");
+                case 4:
+                   boolean venda =  objVenda.realizarVenda(objCliente, objVeiculo);
+                   if (venda){
+                       objCliente.dinheiroDisponivel -= objVeiculo.valor;
+                       System.out.println("seu saldo e " + objCliente.dinheiroDisponivel);
+                   }
+
+                    objFucionario.funcionarioBonus(objVeiculo);
+
+                    System.out.println("O funcionário ficou com 10% do valor da venda. O percentual é: " + objFucionario.bonus);
+
+                    break;
+
+                case 5:
+                    contimuar = false;
+                    break;
+            }
+
+            if (decisao < 0 || decisao > 5){
+                System.out.println("digite uma opcao valida");
+            }
         }
 
-    }
+
+        }
 
 
 }

@@ -25,8 +25,6 @@ public class Veiculo {
         System.out.print("imforme o valor: ");
         valor = Teclado.nextDouble();
 
-        Teclado.close();
-
         System.out.println("cadastro finalizado!");
     }
 

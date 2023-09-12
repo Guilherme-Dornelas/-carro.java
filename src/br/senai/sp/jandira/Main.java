@@ -10,7 +10,8 @@ public class Main {
         System.out.println("/-/--/-/-/-/-/--/agencia multimarcas/-/-/-/-/-/-/-/-/--/-");
         System.out.println("-------------------iniciar cadastro!--------------- ");
 
-        Menu objMneu = new Menu();
-        objMneu.escolaCdastro();
+        Menu objMenu = new Menu();
+        objMenu.escolaCadastro();// class do menu;
+
     }
 }

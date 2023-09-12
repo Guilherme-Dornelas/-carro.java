@@ -8,6 +8,8 @@ public class Cliente {
     String dataNascimento;
     long telefone, cpf, rg;
 
+     double dinheiroDisponivel;
+
     public void CadastroClient() {
         Scanner teclado = new Scanner(System.in);
         System.out.print("Cadastar Cliente!");
@@ -26,8 +28,9 @@ public class Cliente {
         Endereco = teclado.next();
         System.out.print("imforme seu telefone: ");
         telefone = teclado.nextLong();
-
-        teclado.close();
+        System.out.println("Quanto tem para gastar?");
+        dinheiroDisponivel = teclado.nextDouble();
+        teclado.nextLine();
 
         System.out.print("cadastro finalizado!");
     }
