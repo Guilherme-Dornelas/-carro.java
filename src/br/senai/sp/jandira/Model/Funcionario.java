@@ -1,5 +1,8 @@
 package br.senai.sp.jandira.Model;
 
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 public class Funcionario {
 
@@ -8,6 +11,8 @@ public class Funcionario {
     long telefone, cpf, rg;
 
     double bonus;
+
+    List<Funcionario> listFuncionario = new ArrayList<>();
 
     public void CadastroFuncionario(){
         Scanner teclado = new Scanner(System.in);
@@ -36,8 +41,26 @@ public class Funcionario {
     public void funcionarioBonus(Veiculo objVeiculo){
         System.out.println("------- saudo do vendedor ---------");
         double percentual = objVeiculo.valor * 0.10;
-
         bonus = percentual;
     }
 
+    public void adicionarFuncionario( Funcionario objFuncionario){
+        listFuncionario.add(objFuncionario);
+    }
+
+    public void listarFuncionario(){
+        for (Funcionario objFuncionario : listFuncionario){
+            System.out.println(objFuncionario.Nome);
+        }
+    }
+
+
+    public Funcionario pesquisarVendedor(String nome){
+        for (Funcionario vendedor : listFuncionario){
+            if (vendedor.Nome.equalsIgnoreCase(nome)){
+                return vendedor;
+            }
+        }
+        return null;
+    }
 }
